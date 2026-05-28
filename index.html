@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wakoo - Premium Social Dating Platform for Meaningful Connections</title>
+  <meta name="description" content="Wakoo is the #1 social dating platform for genuine connections. Meet new people, chat in real-time, join voice rooms, and find your perfect match. Download now and start your love story." />
+  <meta name="keywords" content="wakoo, dating app, social platform, matchmaking, online dating, meet people, voice chat, group chat, find love, dating site" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+  <link rel="canonical" href="https://wakoo.love/" />
+  <meta property="og:title" content="Wakoo - Premium Social Dating Platform for Meaningful Connections" />
+  <meta property="og:description" content="Wakoo is the #1 social dating platform for genuine connections. Meet new people, chat in real-time, join voice rooms, and find your perfect match." />
+  <meta property="og:url" content="https://wakoo.love/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Wakoo" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Wakoo - Premium Social Dating Platform for Meaningful Connections" />
+  <meta name="twitter:description" content="Meet new people, chat in real-time, join voice rooms, and find your perfect match on Wakoo." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23ff6b9d'/%3E%3Cstop offset='100%25' style='stop-color:%23c084fc'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M16 28 C6 20, 0 13, 5 6 C8 1, 16 4, 16 11 C16 4, 24 1, 27 6 C32 13, 26 20, 16 28Z' fill='url(%23g)'/%3E%3C/svg%3E" />
+
+  <style>
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #f8f7fc;
+      color: #1a1a2e;
+      line-height: 1.6;
+    }
+
+    /* ===== Typography ===== */
+    h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
+    p { color: #555; max-width: 640px; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== Navbar ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(248, 247, 252, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-icon svg { width: 32px; height: 32px; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: #555; transition: color 0.2s; }
+    .nav-links a:hover { color: #ff6b9d; }
+    .nav-cta {
+      padding: 10px 24px;
+      border-radius: 100px;
+      background: linear-gradient(135deg, #ff6b9d, #c084fc);
+      color: #fff !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .mobile-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #1a1a2e;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      padding: 140px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: 50%;
+      width: 800px;
+      height: 800px;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(255,107,157,0.08) 0%, rgba(192,132,252,0.05) 40%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero .container { position: relative; }
+    .hero h1 { margin-bottom: 16px; }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, #ff6b9d, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      margin: 0 auto 36px;
+      color: #666;
+    }
+    .hero .btn-primary {
+      display: inline-block;
+      padding: 16px 48px;
+      border-radius: 100px;
+      background: linear-gradient(135deg, #ff6b9d, #c084fc);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 8px 32px rgba(255, 107, 157, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+    .hero .btn-primary:hover {
+      opacity: 0.95;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(255, 107, 157, 0.4);
+    }
+
+    /* ===== Sections ===== */
+    .section {
+      padding: 80px 0;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .section-header p {
+      margin: 12px auto 0;
+      color: #888;
+      font-size: 1.05rem;
+    }
+
+    .section-alt { background: #fff; }
+
+    /* ===== Feature Cards ===== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 16px;
+      padding: 32px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 1.4rem;
+    }
+    .feature-icon.pink { background: rgba(255, 107, 157, 0.1); }
+    .feature-icon.purple { background: rgba(192, 132, 252, 0.1); }
+    .feature-icon.blue { background: rgba(96, 165, 250, 0.1); }
+    .feature-icon.teal { background: rgba(52, 211, 153, 0.1); }
+    .feature-icon.orange { background: rgba(251, 146, 60, 0.1); }
+    .feature-icon.rose { background: rgba(244, 114, 182, 0.1); }
+    .feature-card h3 { margin-bottom: 8px; font-size: 1.15rem; }
+    .feature-card p { font-size: 0.92rem; color: #777; max-width: 100%; }
+
+    /* ===== How It Works ===== */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .step-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 16px;
+      padding: 32px 28px;
+      text-align: center;
+      position: relative;
+    }
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff6b9d, #c084fc);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .step-card h3 { margin-bottom: 8px; font-size: 1.05rem; }
+    .step-card p { font-size: 0.9rem; color: #777; max-width: 100%; }
+
+    /* ===== Why Wakoo ===== */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .why-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .why-check {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff6b9d, #c084fc);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .why-card h4 { font-size: 1rem; margin-bottom: 4px; }
+    .why-card p { font-size: 0.88rem; color: #777; max-width: 100%; }
+
+    /* ===== FAQ ===== */
+    .faq-grid {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 20px 24px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+      user-select: none;
+    }
+    .faq-question:hover { background: rgba(0,0,0,0.02); }
+    .faq-arrow {
+      transition: transform 0.3s;
+      font-size: 0.8rem;
+      color: #999;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s, padding 0.3s;
+      padding: 0 24px;
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 0 24px 20px;
+    }
+
+    /* ===== CTA ===== */
+    .cta-section {
+      text-align: center;
+      padding: 80px 0;
+      background: linear-gradient(135deg, rgba(255,107,157,0.04), rgba(192,132,252,0.04));
+    }
+    .cta-section h2 { margin-bottom: 12px; }
+    .cta-section p {
+      margin: 0 auto 32px;
+      color: #888;
+    }
+    .cta-section .btn-primary {
+      display: inline-block;
+      padding: 16px 48px;
+      border-radius: 100px;
+      background: linear-gradient(135deg, #ff6b9d, #c084fc);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 8px 32px rgba(255, 107, 157, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+    .cta-section .btn-primary:hover {
+      opacity: 0.95;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(255, 107, 157, 0.4);
+    }
+    .cta-section .btn-secondary {
+      display: inline-block;
+      padding: 16px 48px;
+      border-radius: 100px;
+      background: #fff;
+      color: #ff6b9d;
+      font-weight: 600;
+      font-size: 1rem;
+      border: 2px solid rgba(255, 107, 157, 0.2);
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+      margin-left: 12px;
+    }
+    .cta-section .btn-secondary:hover {
+      border-color: #ff6b9d;
+      transform: translateY(-2px);
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      padding: 48px 0 32px;
+      border-top: 1px solid rgba(0,0,0,0.04);
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .footer-links a {
+      font-size: 0.85rem;
+      color: #888;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #ff6b9d; }
+    .footer-copy {
+      font-size: 0.82rem;
+      color: #aaa;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: flex; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: rgba(248, 247, 252, 0.98);
+        backdrop-filter: blur(12px);
+        padding: 20px 24px;
+        gap: 16px;
+        border-bottom: 1px solid rgba(0,0,0,0.04);
+      }
+
+      .features-grid,
+      .steps-grid,
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero { padding: 120px 0 60px; }
+      .section { padding: 60px 0; }
+      .cta-section .btn-secondary { margin: 12px 0 0; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .hero .btn-primary { padding: 14px 36px; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logog" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff6b9d"/>
+                <stop offset="100%" stop-color="#c084fc"/>
+              </linearGradient>
+            </defs>
+            <path d="M16 28 C6 20, 0 13, 5 6 C8 1, 16 4, 16 11 C16 4, 24 1, 27 6 C32 13, 26 20, 16 28Z" fill="url(#logog)"/>
+          </svg>
+        </div>
+        wakoo
+      </a>
+
+      <button class="mobile-toggle" aria-label="Toggle menu" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#why-wakoo">Why Wakoo</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://mirofish.my/" class="nav-cta" target="_blank" rel="noopener noreferrer">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container">
+      <h1>Find Your <span class="highlight">Perfect Match</span> on Wakoo</h1>
+      <p>The #1 social dating platform where genuine connections begin. Meet new people, chat in real-time, and discover someone truly special.</p>
+      <a href="https://mirofish.my/" class="btn-primary" target="_blank" rel="noopener noreferrer">Start Your Journey</a>
+    </div>
+  </section>
+
+  <!-- ===== Features ===== -->
+  <section class="section section-alt" id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Designed for Real Connections</h2>
+        <p>Wakoo brings together the features that make online dating feel natural and exciting.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon pink">&#9829;</div>
+          <h3>Smart Matchmaking</h3>
+          <p>Our intelligent algorithm learns your preferences and suggests compatible matches that share your interests and values.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon purple">&#9834;</div>
+          <h3>Voice Chat Rooms</h3>
+          <p>Join themed voice rooms where you can meet groups of like-minded people. Share stories, laugh together, and let conversations flow naturally.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon blue">&#9993;</div>
+          <h3>Real-Time Messaging</h3>
+          <p>Send instant messages, share photos, and express yourself with stickers. Every conversation feels immediate and personal.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon teal">&#9670;</div>
+          <h3>Interest-Based Groups</h3>
+          <p>Explore communities built around your hobbies and passions. From late-night discussions to themed hangouts, find your people.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon orange">&#9733;</div>
+          <h3>Verified Profiles</h3>
+          <p>Every profile goes through a verification process so you can be confident you are talking to real people who are who they say they are.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon rose">&#9826;</div>
+          <h3>Private Mode</h3>
+          <p>Control your privacy with granular settings. Choose who can see your profile, send you messages, and view your activity status.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How It Works ===== -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>How Wakoo Works</h2>
+        <p>Three simple steps to start building meaningful connections.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Create Your Profile</h3>
+          <p>Sign up in seconds. Add a few photos, tell us about yourself, and set your preferences. Your journey starts with a profile that reflects who you are.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Discover Matches</h3>
+          <p>Browse through curated suggestions or explore profiles in interest-based groups. Our smart feed shows you people you are most likely to connect with.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Start a Conversation</h3>
+          <p>Send a message, join a voice room, or drop into a group chat. The ice is already broken. All that is left is to be yourself.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Why Wakoo ===== -->
+  <section class="section section-alt" id="why-wakoo">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Millions Choose Wakoo</h2>
+        <p>What sets us apart from every other dating platform.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-check">&#10003;</div>
+          <div>
+            <h4>Authentic Community</h4>
+            <p>We prioritize real interactions over superficial swipes. Every feature is designed to foster genuine human connection.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-check">&#10003;</div>
+          <div>
+            <h4>Safety First</h4>
+            <p>Robust moderation, profile verification, and reporting tools keep the community safe and respectful for everyone.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-check">&#10003;</div>
+          <div>
+            <h4>No More Awkward Starts</h4>
+            <p>Voice rooms and group chats remove the pressure of one-on-one conversations. Meet people naturally in a relaxed setting.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-check">&#10003;</div>
+          <div>
+            <h4>Always Evolving</h4>
+            <p>We ship new features every month based on what our community asks for. Wakoo grows with you.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-check">&#10003;</div>
+          <div>
+            <h4>Global Reach</h4>
+            <p>Connect with people from around the world. Wakoo breaks down geographic barriers to love and friendship.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-check">&#10003;</div>
+          <div>
+            <h4>Privacy Guaranteed</h4>
+            <p>Your data stays yours. We use end-to-end encryption for messages and never share your personal information.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Everything you need to know before getting started on Wakoo.</p>
+      </div>
+      <div class="faq-grid">
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Is Wakoo free to use?</span>
+            <span class="faq-arrow">&#9660;</span>
+          </div>
+          <div class="faq-answer">
+            Yes, Wakoo offers a full-featured free tier that includes profile creation, messaging, and joining group chats. Premium subscriptions unlock additional features like unlimited likes, advanced filters, and ad-free browsing.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>How does Wakoo verify profiles?</span>
+            <span class="faq-arrow">&#9660;</span>
+          </div>
+          <div class="faq-answer">
+            We use a multi-step verification process that includes email confirmation, phone number validation, and optional photo-based verification. Verified profiles are clearly marked so you know who you are talking to is genuine.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Can I delete my account at any time?</span>
+            <span class="faq-arrow">&#9660;</span>
+          </div>
+          <div class="faq-answer">
+            Absolutely. You can delete your account and all associated data directly from your settings page at any time. We believe you should always have full control over your presence on Wakoo.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>What are voice chat rooms?</span>
+            <span class="faq-arrow">&#9660;</span>
+          </div>
+          <div class="faq-answer">
+            Voice chat rooms are real-time audio spaces where multiple people can join and talk together. They are organized by topics and interests, making it easy to find conversations you will enjoy. No video required unless you choose to share.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>How does matchmaking work on Wakoo?</span>
+            <span class="faq-arrow">&#9660;</span>
+          </div>
+          <div class="faq-answer">
+            Our matchmaking engine considers your stated preferences, your activity patterns, the interests you engage with, and feedback from your interactions. It improves over time as you use the platform, surfacing people who are genuinely compatible with you.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to Find Someone Special?</h2>
+      <p>Join millions of people who have already discovered meaningful connections on Wakoo.</p>
+      <a href="https://mirofish.my/" class="btn-primary" target="_blank" rel="noopener noreferrer">Get Started Free</a>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#faq">FAQ</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 Wakoo. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    function toggleFaq(el) {
+      const item = el.closest('.faq-item');
+      if (!item) return;
+      const isOpen = item.classList.contains('open');
+      // Close all other FAQ items
+      document.querySelectorAll('.faq-item.open').forEach(function(other) {
+        other.classList.remove('open');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+      }
+    }
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav-links a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    // Close FAQ on click outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.faq-item')) {
+        document.querySelectorAll('.faq-item.open').forEach(function(item) {
+          item.classList.remove('open');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

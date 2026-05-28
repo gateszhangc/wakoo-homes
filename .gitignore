@@ -1,0 +1,27 @@
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+._*
+
+# Editor
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Dependency directories
+node_modules/
+bower_components/
+vendor/
+
+# Build artifacts
+dist/
+build/
+*.log
+.env
+.env.local
